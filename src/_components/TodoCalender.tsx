@@ -1,79 +1,67 @@
-import React from 'react';
-import type { BadgeProps, CalendarProps } from 'antd';
-import { Badge, Calendar } from 'antd';
-import type { Dayjs } from 'dayjs';
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import listPlugin from "@fullcalendar/list";
+import interactionPlugin from "@fullcalendar/interaction";
+import { useLayoutEffect, useRef, useState } from "react";
+import { useMediaQuery } from "../Hooks/useMediaQuery";
 
-const getListData = (value: Dayjs) => {
-  let listData: { type: string; content: string }[] = []; // Specify the type of listData
-  switch (value.date()) {
-    case 8:
-      listData = [
-        { type: 'warning', content: 'This is warning event.' },
-        { type: 'success', content: 'This is usual event.' },
-      ];
-      break;
-    case 10:
-      listData = [
-        { type: 'warning', content: 'This is warning event.' },
-        { type: 'success', content: 'This is usual event.' },
-        { type: 'error', content: 'This is error event.' },
-      ];
-      break;
-    case 15:
-      listData = [
-        { type: 'warning', content: 'This is warning event' },
-        { type: 'success', content: 'This is very long usual event......' },
-        { type: 'error', content: 'This is error event 1.' },
-        { type: 'error', content: 'This is error event 2.' },
-        { type: 'error', content: 'This is error event 3.' },
-        { type: 'error', content: 'This is error event 4.' },
-      ];
-      break;
-    default:
-  }
-  return listData || [];
-};
+import EditorModal from "./EditorModal";
+import useModal from "../Hooks/useModal";
 
-const getMonthData = (value: Dayjs) => {
-  if (value.month() === 8) {
-    return 1394;
-  }
-};
+function TodoCalender({ mockData }: any) {
+	let clickId, clickTitle, clickIsDone, clickStart;
+	const { isModalOpen, showModal, handleOk, handleCancel } = useModal();
+	const [clickData, setClickData] = useState({
+		clickId,
+		clickTitle,
+		clickIsDone,
+		clickStart,
+	});
 
-const TodoCalender: React.FC = () => {
-  const monthCellRender = (value: Dayjs) => {
-    const num = getMonthData(value);
-    return num ? (
-      <div className="notes-month">
-        <section>{num}</section>
-        <span>Backlog number</span>
-      </div>
-    ) : null;
-  };
+	function handleEventClick(e: { event: any }) {
+		setClickData({
+			clickId: e.event._def.publicId,
+			clickTitle: e.event._def.title,
+			clickIsDone: e.event._def.extendedProps.isDone,
+			clickStart: e.event._instance.range.start,
+		});
+		showModal();
+	}
+	const calenderMediaQuery = useMediaQuery("(min-width: 768px)");
+	const calendarRef = useRef<FullCalendar>(null);
 
-  const dateCellRender = (value: Dayjs) => {
-    const listData = getListData(value);
-    return (
-      <ul className="events">
-        {listData.map((item) => (
-          <li key={item.content}>
-            <Badge
-              status={item.type as BadgeProps['status']}
-              text={item.content}
-            />
-          </li>
-        ))}
-      </ul>
-    );
-  };
+	useLayoutEffect(() => {
+		const calendarApi = calendarRef!.current!.getApi();
+		calendarApi.changeView(calenderMediaQuery ? "dayGridMonth" : "listMonth");
+	}, [calenderMediaQuery]);
+	console.log(clickData);
 
-  const cellRender: CalendarProps<Dayjs>['cellRender'] = (current, info) => {
-    if (info.type === 'date') return dateCellRender(current);
-    if (info.type === 'month') return monthCellRender(current);
-    return info.originNode;
-  };
+	return (
+		<div>
+			<FullCalendar
+				plugins={[listPlugin, dayGridPlugin, interactionPlugin]}
+				ref={calendarRef}
+				initialView={calenderMediaQuery ? "dayGridMonth" : "listMonth"}
+				headerToolbar={{
+					left: "dayGridMonth,listMonth",
+					center: "title",
+					right: "prev,next today",
+				}}
+				dayMaxEvents={true}
+				events={mockData}
+				height={"600px"}
+				eventClick={handleEventClick}
+				eventDisplay={"auto"}
+			/>
 
-  return <Calendar cellRender={cellRender} />;
-};
+			<EditorModal
+				open={isModalOpen}
+				onCancel={handleCancel}
+				clickData={clickData}
+				handleOk={handleOk}
+			/>
+		</div>
+	);
+}
 
 export default TodoCalender;
