@@ -14,16 +14,19 @@ function TodoList({ todos, updateTodo, deleteTodo }: TodoListProps) {
 		<>
 			<Divider orientation="left">Todo List</Divider>
 			<List
+				style={{ height: "700px", overflowY: "scroll" }}
 				bordered
 				dataSource={todos}
 				renderItem={(todo: Todo) => (
 					<List.Item>
-						<TodoItem
-							key={todo.id}
-							todo={todo}
-							updateTodo={updateTodo}
-							deleteTodo={deleteTodo}
-						/>
+						<div style={{ width: "100%", margin: "0px" }}>
+							<TodoItem
+								key={todo.id}
+								todo={todo}
+								updateTodo={updateTodo}
+								deleteTodo={deleteTodo}
+							/>
+						</div>
 					</List.Item>
 				)}
 			/>

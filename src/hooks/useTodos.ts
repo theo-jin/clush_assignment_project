@@ -28,10 +28,10 @@ export const useTodos = () => {
 		});
 	};
 
-	const updateTodo = (payload: string) => {
+	const updateTodo = (id: string, content?: string) => {
 		dispatch({
 			type: "UPDATE",
-			payload: payload,
+			payload: { id, content },
 		});
 	};
 
