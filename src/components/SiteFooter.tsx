@@ -1,7 +1,8 @@
 import { Footer } from "antd/es/layout/layout";
-import { Logo } from "./Logo";
+import  Logo from "./Logo";
+import { memo } from "react";
 
-export const SiteFooter: React.FC = () => {
+const SiteFooter: React.FC = () => {
 	return (
 		<Footer style={{ textAlign: "center", padding: "5px" }}>
 			<Logo />
@@ -9,3 +10,4 @@ export const SiteFooter: React.FC = () => {
 		</Footer>
 	);
 };
+export default memo(SiteFooter);

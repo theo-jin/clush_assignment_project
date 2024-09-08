@@ -1,8 +1,8 @@
-import { Button, Input, Space } from "antd";
+import { Button, Space } from "antd";
 import dayjs from "dayjs";
 import type { Todo } from "../hooks/useTodos";
 import type { UseTodo } from "../hooks/useTodos";
-import { SetStateAction, useState } from "react";
+import { memo, SetStateAction, useState } from "react";
 
 type TodoItemProps = {
 	todo: Todo;
@@ -88,4 +88,4 @@ function TodoItem({ todo, updateTodo, deleteTodo }: TodoItemProps) {
 	);
 }
 
-export default TodoItem;
+export default memo(TodoItem);

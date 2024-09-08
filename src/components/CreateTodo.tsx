@@ -2,6 +2,7 @@ import { Button, DatePicker, Form, FormProps, Input, Space } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 
 import type { UseTodo } from "../hooks/useTodos";
+import { memo } from "react";
 
 type FieldType = {
 	date: Dayjs;
@@ -10,7 +11,7 @@ type FieldType = {
 type CreateTodoProps = {
 	createTodo: UseTodo["createTodo"];
 };
-export default function CreateTodo({ createTodo }: CreateTodoProps) {
+function CreateTodo({ createTodo }: CreateTodoProps) {
 	const [form] = Form.useForm();
 
 	const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
@@ -42,3 +43,5 @@ export default function CreateTodo({ createTodo }: CreateTodoProps) {
 		</Form>
 	);
 }
+
+export default memo(CreateTodo);

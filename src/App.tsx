@@ -1,12 +1,13 @@
 import React from "react";
 import { Layout } from "antd";
 
-import { SiteFooter } from "./components/SiteFooter";
-import { SiteHeader } from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
+import SiteHeader from "./components/SiteHeader";
 
 import CreateTodo from "./components/CreateTodo";
 import TodoList from "./components/TodoList";
 import { useTodos } from "./hooks/useTodos";
+
 const { Content } = Layout;
 
 const App: React.FC = () => {
