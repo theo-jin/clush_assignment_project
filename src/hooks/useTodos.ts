@@ -41,7 +41,7 @@ export const useTodos = () => {
 
 	return {
 		todos,
-		createTodo: createTodo,
+		createTodo,
 		deleteTodo,
 		updateTodo,
 	};

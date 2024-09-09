@@ -2,10 +2,12 @@ import { Divider, List } from "antd";
 import TodoItem from "./TodoItem";
 
 import { memo, useContext } from "react";
-import { TodoStateContext } from "../App";
+
+import { TodoStateContext } from "../providers/TodoProvider";
 
 function TodoList() {
 	const todos = useContext(TodoStateContext);
+
 	return (
 		<>
 			<Divider orientation="left">Todo List</Divider>

@@ -2,7 +2,19 @@
 
 ## 프로젝트 소개 및 구현기능
 
-Clush 기업 과제입니다. 할일의 생성,표시,수정,삭제가 가능한 Todo앱입니다. 수정기능에는 두가지가 있는데, 체크박스를 클릭하여 할일을 완료했다는 기능과 수정버튼을 눌러 할 일의 내용을 수정하는 기능이 있습니다.
+본 프로젝트는 Clush 기업 과제 Todo 앱입니다. 사용자가 할 일을 생성, 표시, 수정, 삭제할 수 있는 기능을 제공하며, 효율적인 업무 관리를 돕는 것을 목표로 합니다.
+
+### 주요 기능
+
+- Todo 생성 및 표시: 사용자는 날짜를 지정해 새로운 할 일을 추가할 수 있으며, 기본값은 오늘 날짜로 설정됩니다. 추가된 할 일은 목록 형태로 표시됩니다.
+- Todo 수정:
+  - 완료 표시: 체크박스를 클릭하여 할 일 완료 여부를 표시합니다.
+  - 내용 수정: 수정 버튼을 클릭하여 할 일의 내용을 변경할 수 있습니다.
+- Todo 삭제: 더 이상 필요 없는 할 일을 목록에서 삭제합니다.
+
+### 배포 링크
+
+https://clush-45866.web.app/
 
 ## 기술스택
 
@@ -16,6 +28,7 @@ Clush 기업 과제입니다. 할일의 생성,표시,수정,삭제가 가능한
 ?&logo=Color=white"  alt="Faker.js">
 <img src="https://img.shields.io/badge/ESLint-4B32C3?&logo=ESLint&logoColor=white"  alt="ESLint">
 <img src="https://img.shields.io/badge/Prettier-F7B93E?&logo=Prettier&logoColor=white"  alt="Prettier">
+<img src="https://img.shields.io/badge/Firebase-DD2C00?&logo=firebase&logoColor=white" alt="Firebase">
 
 ## 실행 방법
 
@@ -24,3 +37,7 @@ $ git clone https://github.com/theo-jin/clush_assignment_project.git
 $ npm install
 $ npm run dev
 ```
+
+## 주력으로 사용한 컴포넌트
+
+컴포넌트 작성

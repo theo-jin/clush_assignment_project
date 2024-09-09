@@ -2,7 +2,7 @@ import { Button, DatePicker, Form, FormProps, Input, Space } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 
 import { memo, useContext } from "react";
-import { TodoDispatchContext } from "../App";
+import { TodoDispatchContext } from "../providers/TodoProvider";
 
 type FieldType = {
 	date: Dayjs;

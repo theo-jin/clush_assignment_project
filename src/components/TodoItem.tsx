@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import type { Todo } from "../hooks/useTodos";
 
 import { memo, SetStateAction, useContext, useState } from "react";
-import { TodoDispatchContext } from "../App";
+import { TodoDispatchContext } from "../providers/TodoProvider";
 
 function TodoItem({ id, isDone, content, date }: Todo) {
 	const { updateTodo, deleteTodo } = useContext(TodoDispatchContext);
