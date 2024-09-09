@@ -1,50 +1,26 @@
-# React + TypeScript + Vite
+# Clush_Assignment_Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 프로젝트 소개 및 구현기능
 
-Currently, two official plugins are available:
+Clush 기업 과제입니다. 할일의 생성,표시,수정,삭제가 가능한 Todo앱입니다. 수정기능에는 두가지가 있는데, 체크박스를 클릭하여 할일을 완료했다는 기능과 수정버튼을 눌러 할 일의 내용을 수정하는 기능이 있습니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 기술스택
 
-## Expanding the ESLint configuration
+<img src="https://img.shields.io/badge/typescript-3178C6?&logo=typescript&logoColor=white"  alt="typescript">
+<img src="https://img.shields.io/badge/React-61DAFB?&logo=React&logoColor=white"  alt="React">
+<img src="https://img.shields.io/badge/Vite-646CFF?&logo=vite&logoColor=white"  alt="Vite">
+<img src="https://img.shields.io/badge/Ant Design-0170FE?&logo=antdesign&logoColor=white"  alt="ant Designe">
+<img src="https://img.shields.io/badge/Day.js-ff5f4c
+?&logo=Color=white"  alt="Day.js">
+<img src="https://img.shields.io/badge/Faker.js-10b77f
+?&logo=Color=white"  alt="Faker.js">
+<img src="https://img.shields.io/badge/ESLint-4B32C3?&logo=ESLint&logoColor=white"  alt="ESLint">
+<img src="https://img.shields.io/badge/Prettier-F7B93E?&logo=Prettier&logoColor=white"  alt="Prettier">
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 실행 방법
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+$ git clone https://github.com/theo-jin/clush_assignment_project.git
+$ npm install
+$ npm run dev
 ```

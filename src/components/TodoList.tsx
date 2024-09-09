@@ -1,15 +1,11 @@
 import { Divider, List } from "antd";
 import TodoItem from "./TodoItem";
-import type { Todo } from "../hooks/useTodos";
-import type { UseTodo } from "../hooks/useTodos";
 
-type TodoListProps = {
-	todos: Todo[];
-	updateTodo: UseTodo["updateTodo"];
-	deleteTodo: UseTodo["deleteTodo"];
-};
+import { memo, useContext } from "react";
+import { TodoStateContext } from "../App";
 
-function TodoList({ todos, updateTodo, deleteTodo }: TodoListProps) {
+function TodoList() {
+	const todos = useContext(TodoStateContext);
 	return (
 		<>
 			<Divider orientation="left">Todo List</Divider>
@@ -17,15 +13,10 @@ function TodoList({ todos, updateTodo, deleteTodo }: TodoListProps) {
 				style={{ height: "700px", overflowY: "scroll" }}
 				bordered
 				dataSource={todos}
-				renderItem={(todo: Todo) => (
+				renderItem={(todo) => (
 					<List.Item>
 						<div style={{ width: "100%", margin: "0px" }}>
-							<TodoItem
-								key={todo.id}
-								todo={todo}
-								updateTodo={updateTodo}
-								deleteTodo={deleteTodo}
-							/>
+							<TodoItem key={todo.id} {...todo} />
 						</div>
 					</List.Item>
 				)}
@@ -34,4 +25,4 @@ function TodoList({ todos, updateTodo, deleteTodo }: TodoListProps) {
 	);
 }
 
-export default TodoList;
+export default memo(TodoList);

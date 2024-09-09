@@ -1,24 +1,20 @@
-import { Button, Space } from "antd";
+import { Button, Checkbox, Space } from "antd";
 import dayjs from "dayjs";
 import type { Todo } from "../hooks/useTodos";
-import type { UseTodo } from "../hooks/useTodos";
-import { memo, SetStateAction, useState } from "react";
 
-type TodoItemProps = {
-	todo: Todo;
-	updateTodo: UseTodo["updateTodo"];
-	deleteTodo: UseTodo["deleteTodo"];
-};
+import { memo, SetStateAction, useContext, useState } from "react";
+import { TodoDispatchContext } from "../App";
 
-function TodoItem({ todo, updateTodo, deleteTodo }: TodoItemProps) {
-	const [newContent, setNewContent] = useState(todo.content);
+function TodoItem({ id, isDone, content, date }: Todo) {
+	const { updateTodo, deleteTodo } = useContext(TodoDispatchContext);
+	const [newContent, setNewContent] = useState(content);
 	const [onEdit, setOnEdit] = useState(false);
 	const onChangeCheckbox = () => {
-		updateTodo(todo.id);
+		updateTodo(id);
 	};
 
 	const onClickDeleteButton = () => {
-		deleteTodo(todo.id);
+		deleteTodo(id);
 	};
 	const onStartEditButton = () => {
 		setOnEdit(!onEdit);
@@ -29,21 +25,21 @@ function TodoItem({ todo, updateTodo, deleteTodo }: TodoItemProps) {
 		setNewContent(e.target.value);
 	};
 	const onSubmitEditButton = () => {
-		updateTodo(todo.id, newContent);
+		updateTodo(id, newContent);
 		setOnEdit(!onEdit);
 	};
 	const textStyle = {
 		width: "80%",
-		textDecoration: todo.isDone ? "line-through" : "none",
+		textDecoration: isDone ? "line-through" : "none",
 	};
 	return (
 		<Space.Compact style={{ width: "100%" }}>
 			{onEdit ?
 				<div style={{ width: "80%" }}>
-					<input
+					<Checkbox
 						style={{ margin: "10px" }}
 						onChange={onChangeCheckbox}
-						defaultChecked={todo.isDone}
+						defaultChecked={isDone}
 						type="checkbox"
 					/>
 					<input
@@ -53,13 +49,13 @@ function TodoItem({ todo, updateTodo, deleteTodo }: TodoItemProps) {
 					/>
 				</div>
 			:	<div style={textStyle}>
-					<input
+					<Checkbox
 						style={{ margin: "10px" }}
 						onChange={onChangeCheckbox}
-						defaultChecked={todo.isDone}
+						defaultChecked={isDone}
 						type="checkbox"
 					/>
-					{todo.content}
+					{content}
 				</div>
 			}
 			<div
@@ -68,7 +64,7 @@ function TodoItem({ todo, updateTodo, deleteTodo }: TodoItemProps) {
 					margin: "0px",
 				}}
 			>
-				{dayjs(todo.date).format("YYYY-MM-DD")}
+				{dayjs(date).format("YYYY-MM-DD")}
 			</div>
 			{onEdit ?
 				<>
