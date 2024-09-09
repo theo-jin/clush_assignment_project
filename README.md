@@ -35,9 +35,14 @@ https://clush-45866.web.app/
 ```sh
 $ git clone https://github.com/theo-jin/clush_assignment_project.git
 $ npm install
-$ npm run dev
+$ npm run build
+$ npm run preview
 ```
 
 ## 주력으로 사용한 컴포넌트
 
-컴포넌트 작성
+![alt text](image.png)
+
+TodoProviders에서 Context를 두 개로 분리하는 것에 가장 신경을 썼습니다. 과제를 진행하며 리스트 컴포넌트를 만들었을 때, de 2개뿐이었지만 props drilling이 발생했습니다. 이를 해결하기 위해 전역 상태로 상태 관리를 하려고 했습니다. 상태 관리가 복잡하지 않다고 판단했기 때문에, Zustand나 Redux Toolkit 같은 외부 라이브러리를 사용하지 않고 Context API로 전역 상태를 관리하기로 했습니다.
+
+처음에는 TodosProvider라는 단일 Context로 todos, createTodo, updateTodo, deleteTodo 등을 관리했지만, 이전에 적용한 컴포넌트 최적화(memo 적용 등)가 제대로 작동하지 않는 문제가 발생했습니다. 이를 해결하기 위해, 변경 가능한 값인 todos는 TodoStateContext로, 변하지 않는 함수인 createTodo, updateTodo, deleteTodo는 TodoDispatchContext로 분리하여 Context를 관리했습니다.

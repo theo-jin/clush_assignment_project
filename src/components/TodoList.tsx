@@ -1,12 +1,10 @@
 import { Divider, List } from "antd";
 import TodoItem from "./TodoItem";
 
-import { memo, useContext } from "react";
-
-import { TodoStateContext } from "../providers/TodoProvider";
+import { useStateTodo } from "../hooks/useTodos";
 
 function TodoList() {
-	const todos = useContext(TodoStateContext);
+	const todos = useStateTodo();
 
 	return (
 		<>
@@ -27,4 +25,4 @@ function TodoList() {
 	);
 }
 
-export default memo(TodoList);
+export default TodoList;

@@ -1,6 +1,5 @@
 import { Footer } from "antd/es/layout/layout";
-import  Logo from "./Logo";
-import { memo } from "react";
+import Logo from "./Logo";
 
 const SiteFooter: React.FC = () => {
 	return (
@@ -10,4 +9,4 @@ const SiteFooter: React.FC = () => {
 		</Footer>
 	);
 };
-export default memo(SiteFooter);
+export default SiteFooter;

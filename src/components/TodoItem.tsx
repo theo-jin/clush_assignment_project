@@ -1,12 +1,11 @@
 import { Button, Checkbox, Space } from "antd";
 import dayjs from "dayjs";
-import type { Todo } from "../hooks/useTodos";
+import { useDispatchTodo, type Todo } from "../hooks/useTodos";
 
-import { memo, SetStateAction, useContext, useState } from "react";
-import { TodoDispatchContext } from "../providers/TodoProvider";
+import { memo, SetStateAction, useState } from "react";
 
 function TodoItem({ id, isDone, content, date }: Todo) {
-	const { updateTodo, deleteTodo } = useContext(TodoDispatchContext);
+	const { updateTodo, deleteTodo } = useDispatchTodo();
 	const [newContent, setNewContent] = useState(content);
 	const [onEdit, setOnEdit] = useState(false);
 	const onChangeCheckbox = () => {

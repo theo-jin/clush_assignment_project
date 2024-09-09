@@ -1,8 +1,9 @@
-import { useCallback, useReducer } from "react";
-import seedTodos from "../utils/seedTodo";
-import { todoReducer } from "../store/todoReducer";
+import { useContext	 } from "react";
+import {
+	TodoDispatchContext,
+	TodoStateContext,
+} from "../providers/TodoProvider";
 
-export type UseTodo = ReturnType<typeof useTodos>;
 export type Todo = {
 	id: string;
 	isDone: boolean;
@@ -10,39 +11,50 @@ export type Todo = {
 	date: Date;
 };
 
-export const useTodos = () => {
-	const [todos, dispatch] = useReducer(todoReducer, seedTodos());
-	const createTodo = useCallback(
-		({ content, date }: { content: string; date: Date }): void => {
-			dispatch({
-				type: "CREATE",
-				payload: {
-					content: content,
-					date: date,
-				},
-			});
-		},
-		[],
-	);
+export const useStateTodo = () => {
+	const todos = useContext(TodoStateContext);
 
-	const updateTodo = useCallback((id: string, content?: string) => {
+	if (!todos) {
+		throw new Error("todos Error");
+	}
+	return todos;
+};
+
+export const useDispatchTodo = () => {
+	const dispatch = useContext(TodoDispatchContext);
+	if (!dispatch) {
+		throw new Error("dispatch Error");
+	}
+
+	const createTodo = ({
+		content,
+		date,
+	}: {
+		content: string;
+		date: Date;
+	}): void => {
+		dispatch({
+			type: "CREATE",
+			payload: {
+				content: content,
+				date: date,
+			},
+		});
+	};
+
+	const updateTodo = (id: string, content?: string) => {
 		dispatch({
 			type: "UPDATE",
 			payload: { id, content },
 		});
-	}, []);
+	};
 
-	const deleteTodo = useCallback((payload: string) => {
+	const deleteTodo = (payload: string) => {
 		dispatch({
 			type: "DELETE",
 			payload: payload,
 		});
-	}, []);
-
-	return {
-		todos,
-		createTodo,
-		deleteTodo,
-		updateTodo,
 	};
+
+	return { createTodo, deleteTodo, updateTodo };
 };

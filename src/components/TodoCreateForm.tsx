@@ -1,8 +1,9 @@
 import { Button, DatePicker, Form, FormProps, Input, Space } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 
-import { memo, useContext } from "react";
-import { TodoDispatchContext } from "../providers/TodoProvider";
+import { memo } from "react";
+
+import { useDispatchTodo } from "../hooks/useTodos";
 
 type FieldType = {
 	date: Dayjs;
@@ -10,7 +11,8 @@ type FieldType = {
 };
 
 function CreateTodo() {
-	const { createTodo } = useContext(TodoDispatchContext);
+	const { createTodo } = useDispatchTodo();
+
 	const [form] = Form.useForm();
 
 	const onFinish: FormProps<FieldType>["onFinish"] = (values) => {

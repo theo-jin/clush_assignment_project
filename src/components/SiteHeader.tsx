@@ -1,6 +1,6 @@
 import { Header } from "antd/es/layout/layout";
 import Logo from "./Logo";
-import { memo } from "react";
+
 
 const SiteHeader: React.FC = () => {
 	return (
@@ -10,4 +10,4 @@ const SiteHeader: React.FC = () => {
 	);
 };
 
-export default memo(SiteHeader);
+export default SiteHeader;
