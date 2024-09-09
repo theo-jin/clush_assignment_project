@@ -18,17 +18,17 @@ https://clush-45866.web.app/
 
 ## 기술스택
 
+<p>
 <img src="https://img.shields.io/badge/typescript-3178C6?&logo=typescript&logoColor=white"  alt="typescript">
 <img src="https://img.shields.io/badge/React-61DAFB?&logo=React&logoColor=white"  alt="React">
 <img src="https://img.shields.io/badge/Vite-646CFF?&logo=vite&logoColor=white"  alt="Vite">
 <img src="https://img.shields.io/badge/Ant Design-0170FE?&logo=antdesign&logoColor=white"  alt="ant Designe">
-<img src="https://img.shields.io/badge/Day.js-ff5f4c
-?&logo=Color=white"  alt="Day.js">
-<img src="https://img.shields.io/badge/Faker.js-10b77f
-?&logo=Color=white"  alt="Faker.js">
+<img src= "https://img.shields.io/badge/Day.js-ff5f4c?&logoColor=white" alt="Day.js">
+<img src= "https://img.shields.io/badge/Faker.js-10b77f?&logoColor=white" alt="Faker.js">
 <img src="https://img.shields.io/badge/ESLint-4B32C3?&logo=ESLint&logoColor=white"  alt="ESLint">
 <img src="https://img.shields.io/badge/Prettier-F7B93E?&logo=Prettier&logoColor=white"  alt="Prettier">
 <img src="https://img.shields.io/badge/Firebase-DD2C00?&logo=firebase&logoColor=white" alt="Firebase">
+</p>
 
 ## 실행 방법
 
